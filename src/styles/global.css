@@ -75,6 +75,14 @@
   --bg-tab: #2d2d2d;
 }
 
+.dragging * {
+  cursor: grabbing !important;
+}
+
+.dragging .cursor-pointer {
+  cursor: grabbing !important;
+}
+
 /* Base styles */
 html,
 body {

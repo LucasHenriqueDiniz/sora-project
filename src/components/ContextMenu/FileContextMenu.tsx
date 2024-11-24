@@ -3,18 +3,25 @@ import { VscEdit, VscTrash, VscCopy } from "react-icons/vsc";
 
 interface FileContextMenuProps {
   children: React.ReactNode;
-  onRename: () => void;
-  onDelete: () => void;
+  onRename: (newName: string) => Promise<void> | void;
+  onDelete: () => Promise<void> | void;
   onDuplicate: () => void;
 }
 
 export function FileContextMenu({ children, onRename, onDelete, onDuplicate }: FileContextMenuProps) {
+  const handleRename = () => {
+    const newName = prompt("Enter new name:");
+    if (newName) {
+      onRename(newName);
+    }
+  };
+
   return (
     <ContextMenu>
       <ContextMenuTrigger asChild>{children}</ContextMenuTrigger>
       <ContextMenuContent className="w-48">
         <ContextMenuItem
-          onClick={onRename}
+          onClick={handleRename}
           className="flex items-center gap-2"
         >
           <VscEdit size={16} />
