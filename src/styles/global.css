@@ -1,3 +1,4 @@
+@import "react-complex-tree/lib/style-modern.css";
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,6 +29,16 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+    --rct-color-tree-bg: transparent;
+    --rct-color-tree-focus-outline: transparent;
+    --rct-color-focustree-item-selected-bg: rgba(255, 255, 255, 0.05);
+    --rct-color-focustree-item-selected-text: #fff;
+    --rct-color-focustree-item-hover-bg: rgba(255, 255, 255, 0.05);
+    --rct-color-focustree-item-draggingover-bg: rgba(255, 255, 255, 0.1);
+    --rct-color-focustree-item-draggingover-color: #fff;
+    --rct-color-drag-between-line-bg: #0366d6;
+    --rct-item-height: 20px;
+    --rct-padding: 0;
   }
 
   .light {
@@ -174,4 +185,82 @@ body {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Ajustes para o react-complex-tree */
+.rct-tree-item-title-container {
+  @apply flex items-center !important;
+  padding: 0 !important;
+}
+
+.rct-tree-item {
+  @apply flex items-center !important;
+  padding: 0 !important;
+}
+
+.rct-tree-item-button {
+  @apply py-[2px] px-[2px] rounded-none w-full !important;
+  border: 1px solid transparent;
+  min-height: 22px !important;
+  height: 22px !important;
+}
+
+.rct-tree-item-li-selected > .rct-tree-item-title-container > .rct-tree-item-button {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.rct-tree-item-li-selected > .rct-tree-item-title-container > .rct-tree-item-button::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #0366d6;
+}
+
+.rct-tree-item-li {
+  padding-left: 0 !important;
+}
+
+.rct-tree-items-container {
+  margin-left: 8px !important;
+  position: relative;
+}
+
+.rct-tree-item-li-expanded > .rct-tree-items-container::before {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.rct-tree-item-arrow {
+  @apply flex items-center justify-center !important;
+  width: 16px !important;
+  height: 16px !important;
+  min-width: 16px !important;
+  opacity: 0.7;
+}
+
+.rct-tree-item-title-container:hover .rct-tree-item-button {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.rct-tree-item-li-dragging-over > .rct-tree-item-title-container > .rct-tree-item-button {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.rct-tree-drag-between-line {
+  height: 2px !important;
+  background-color: #0366d6 !important;
+  border-radius: 0;
+}
+
+.rct-tree-root {
+  padding: 0 !important;
 }

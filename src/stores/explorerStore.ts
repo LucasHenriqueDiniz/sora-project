@@ -1,21 +1,13 @@
 import { create } from "zustand";
 
-interface ExplorerState {
+interface ExplorerStore {
   expandedFolders: Record<string, boolean>;
-  setExpanded: (path: string, expanded: boolean) => void;
   toggleExpanded: (path: string) => void;
-  clearExpanded: () => void;
+  setExpanded: (path: string, isExpanded: boolean) => void;
 }
 
-export const useExplorerStore = create<ExplorerState>((set) => ({
+export const useExplorerStore = create<ExplorerStore>((set) => ({
   expandedFolders: {},
-  setExpanded: (path, expanded) =>
-    set((state) => ({
-      expandedFolders: {
-        ...state.expandedFolders,
-        [path]: expanded,
-      },
-    })),
   toggleExpanded: (path) =>
     set((state) => ({
       expandedFolders: {
@@ -23,5 +15,11 @@ export const useExplorerStore = create<ExplorerState>((set) => ({
         [path]: !state.expandedFolders[path],
       },
     })),
-  clearExpanded: () => set({ expandedFolders: {} }),
+  setExpanded: (path, isExpanded) =>
+    set((state) => ({
+      expandedFolders: {
+        ...state.expandedFolders,
+        [path]: isExpanded,
+      },
+    })),
 }));

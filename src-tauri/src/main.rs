@@ -125,7 +125,6 @@ async fn create_project(
         "Saved",
         "Saved/Logs",
         "Saved/Backup",
-        "Saved/Screenshots",
     ];
 
     for dir in dirs.iter() {

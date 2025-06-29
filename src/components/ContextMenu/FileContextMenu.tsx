@@ -1,5 +1,5 @@
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "../ui/context-menu";
-import { VscEdit, VscTrash, VscCopy } from "react-icons/vsc";
+import { Pencil, Trash, Copy } from "lucide-react";
 
 interface FileContextMenuProps {
   children: React.ReactNode;
@@ -24,21 +24,21 @@ export function FileContextMenu({ children, onRename, onDelete, onDuplicate }: F
           onClick={handleRename}
           className="flex items-center gap-2"
         >
-          <VscEdit size={16} />
+          <Pencil className="h-4 w-4" />
           <span>Rename</span>
         </ContextMenuItem>
         <ContextMenuItem
           onClick={onDuplicate}
           className="flex items-center gap-2"
         >
-          <VscCopy size={16} />
+          <Copy className="h-4 w-4" />
           <span>Duplicate</span>
         </ContextMenuItem>
         <ContextMenuItem
           onClick={onDelete}
           className="flex items-center gap-2 text-red-400"
         >
-          <VscTrash size={16} />
+          <Trash className="h-4 w-4" />
           <span>Delete</span>
         </ContextMenuItem>
       </ContextMenuContent>
